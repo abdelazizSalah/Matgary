@@ -2,13 +2,15 @@ class Product {
   final String id;
   final String title;
   final String description;
-  final String imgURL; // network img
+  final String imageUrl; // network img
+  final double price;
   bool isFavorite;
 
   Product(
       {required this.id,
       required this.title,
-      required this.imgURL,
+      required this.imageUrl,
+      required this.price,
       required this.description,
       this.isFavorite = false
 
