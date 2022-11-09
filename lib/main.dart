@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matgary/Screens/product_detail_screen.dart';
 
 import 'Screens/product_overview_screen.dart';
 
@@ -49,6 +50,10 @@ class MyApp extends StatelessWidget {
                   overflow: TextOverflow.visible,
                   color: Colors.amber[500]))),
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
+      },
       home: ProductOverViewScreen(),
     );
   }

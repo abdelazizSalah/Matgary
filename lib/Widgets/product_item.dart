@@ -42,9 +42,14 @@ class ProductItem extends StatelessWidget {
             ),
           ),
         ),
-        child: Image.network(
-          imageURL,
-          fit: BoxFit.fitHeight,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed('routeName', arguments: {'ID': id});
+          },
+          child: Image.network(
+            imageURL,
+            fit: BoxFit.fitHeight,
+          ),
         ),
       ),
     );
