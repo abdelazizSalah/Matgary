@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../Models/product.dart';
+import 'product.dart';
 import '../data/products.dart';
 
 /// here we try to separate as much logic as we can from the widgets themselves
