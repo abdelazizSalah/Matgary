@@ -8,6 +8,8 @@ class ProductDetailScreen extends StatelessWidget {
   static const routeName = '/product-detail-screen-route';
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+
     /// getting the id from the navigator
     final myID = ModalRoute.of(context)?.settings.arguments as String;
 
@@ -18,7 +20,39 @@ class ProductDetailScreen extends StatelessWidget {
     /// .... we want to get all our data
     return Scaffold(
       appBar: AppBar(title: Text(loadedProduct.title)),
-      body: Center(child: Text(loadedProduct.title)),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: mediaQuery.size.height * 0.5,
+              width: mediaQuery.size.width,
+              child: Image.network(
+                loadedProduct.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              '\$${loadedProduct.price}',
+              style: const TextStyle(color: Colors.amber, fontSize: 20),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: mediaQuery.size.width,
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                loadedProduct.description,
+                softWrap: true,
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
