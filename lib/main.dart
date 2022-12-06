@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:matgary/Screens/cart_screen.dart';
 import 'package:matgary/Screens/product_detail_screen.dart';
 import 'package:matgary/providers/cart.dart';
+import 'package:matgary/providers/orders.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/product_overview_screen.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => Cart(),
-        )
+        ),
+        ChangeNotifierProvider(create: (context) => Orders()),
       ],
       child: MaterialApp(
         theme: ThemeData(

@@ -1,3 +1,5 @@
+/// This file is used to be the provider for the cart
+
 import 'package:flutter/cupertino.dart';
 import 'product.dart';
 import '../data/products.dart';
