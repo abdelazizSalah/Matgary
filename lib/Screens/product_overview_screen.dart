@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:matgary/Widgets/badge.dart';
 import 'package:provider/provider.dart';
 import '../Widgets/products_grid.dart';
+import '../providers/cart.dart';
 import '../providers/products_provider.dart';
 
 class ProductOverViewScreen extends StatefulWidget {
@@ -49,6 +51,18 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
                 ),
               ];
             },
+          ),
+          Consumer<Cart>(
+            builder: (context, cartData, ch) => Badge(
+              value: cartData.itemCount.toString(),
+              color: Colors.redAccent,
+              child: ch!,
+            ),
+            child: IconButton(
+              // we separated this here because it doesn't change at all so rerendering it is a kind of waste
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
           )
         ],
         centerTitle: true,

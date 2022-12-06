@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:matgary/Screens/product_detail_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/cart.dart';
 import '../providers/product.dart';
+import '../../Screens/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
   @override
@@ -12,6 +13,12 @@ class ProductItem extends StatelessWidget {
         /// if we set listen to false we will no longer
         /// see the changes if we pressed on the heart icon
         listen: false);
+
+    /// here we are not interrested in what is happenning in the cart,
+    /// we want just to tell it that we want to add new item,
+    /// that is why we are gonna set listen to false.
+    final cart = Provider.of<Cart>(context, listen: false);
+
     final mediaQuery = MediaQuery.of(context);
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
@@ -48,7 +55,9 @@ class ProductItem extends StatelessWidget {
                 Icons.shopify_sharp,
                 color: Colors.amber[100],
               ),
-              onPressed: () {},
+              onPressed: () {
+                cart.addItem(product.id, product.price, product.title);
+              },
             ),
           ),
         ),
