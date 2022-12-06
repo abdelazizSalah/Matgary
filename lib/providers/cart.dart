@@ -43,4 +43,15 @@ class Cart with ChangeNotifier {
   int get itemCount {
     return _items.isEmpty ? 0 : _items.length;
   }
+
+  /// this function is responsible for returnning the total amount of money that
+  /// the user should pay depending on how many items he want multiplied by thier
+  /// prices.
+  double get totalAmount {
+    var total = 0.0;
+    _items.forEach((key, cartItem) {
+      total += cartItem.price * cartItem.quantity;
+    });
+    return total;
+  }
 }

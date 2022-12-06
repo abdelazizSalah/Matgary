@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matgary/Screens/cart_screen.dart';
 import 'package:matgary/Widgets/badge.dart';
 import 'package:provider/provider.dart';
 import '../Widgets/products_grid.dart';
@@ -61,7 +62,9 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
             child: IconButton(
               // we separated this here because it doesn't change at all so rerendering it is a kind of waste
               icon: const Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
             ),
           )
         ],
