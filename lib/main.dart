@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matgary/Screens/product_detail_screen.dart';
+import 'package:matgary/providers/cart.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/product_overview_screen.dart';
@@ -15,8 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// this widget is used by the provider package which is recommended
-    return ChangeNotifierProvider(
-      create: (context) => ProductsProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProductsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Cart(),
+        )
+      ],
       child: MaterialApp(
         theme: ThemeData(
             // to be filled

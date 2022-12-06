@@ -13,7 +13,7 @@ class CartItem {
       required this.title});
 }
 
-class cart with ChangeNotifier {
+class Cart with ChangeNotifier {
   late Map<String, CartItem> _items;
 
   get items {
