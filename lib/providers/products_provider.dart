@@ -7,11 +7,34 @@ import '../data/products.dart';
 /// any thing we need instead of applying that logic inside the widget itself.
 class ProductsProvider with ChangeNotifier {
   List<Product> myItems = myProducts;
+  bool _showFavOnly = false;
 
   List<Product> get items {
     /// returning a copy of our list
+    /// WE SHOULDN'T SEPARATE A LOGIC DEPENDING ON WHAT A WIDGET WANT, IF
+    /// ONE WIDGET WANT TO CHANGE ITS CONTENT DEPENDING ON THE STATE
+    ///  THEN IT SHOULD BE A STATEFULL WIDGET, HERE WE ARE WORKING FOR
+    /// THE WHOLE APP NOT FOR CERTAIN WIDGET
+    // if (_showFavOnly) {
+    //   /// here we don't need to send a copy because toList already create a new
+    //   /// list for us so it wont affect
+    //   return myItems.where((prodItem) => prodItem.isFavorite).toList();
+    // }
     return [...myItems];
-    // return [];
+  }
+
+  List<Product> get favoriteItems {
+    return myItems.where((product) => product.isFavorite).toList();
+  }
+
+  void showFavOnly() {
+    _showFavOnly = true;
+    notifyListeners();
+  }
+
+  void showAll() {
+    _showFavOnly = false;
+    notifyListeners();
   }
 
   void addProduct(product) {

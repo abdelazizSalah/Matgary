@@ -7,7 +7,6 @@ class Product with ChangeNotifier {
   final String imageUrl; // network img
   final double price;
   bool isFavorite;
-
   Product(
       {required this.id,
       required this.title,
