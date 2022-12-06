@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matgary/providers/orders.dart';
 import 'package:provider/provider.dart';
 
 import '../Widgets/cart_item.dart';
@@ -33,7 +34,12 @@ class CartScreen extends StatelessWidget {
                       style: const ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(Colors.blueGrey)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Provider.of<Orders>(context, listen: false).addOrder(
+                            cartData.items.values.toList(),
+                            cartData.totalAmount);
+                        cartData.clearCart();
+                      },
                       child: const Text(
                         'Order Now',
                         style: TextStyle(
