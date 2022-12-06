@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matgary/Screens/cart_screen.dart';
+import 'package:matgary/Widgets/app_drawer.dart';
 import 'package:matgary/Widgets/badge.dart';
 import 'package:provider/provider.dart';
 import '../Widgets/products_grid.dart';
@@ -7,6 +8,8 @@ import '../providers/cart.dart';
 import '../providers/products_provider.dart';
 
 class ProductOverViewScreen extends StatefulWidget {
+  static const routeName = '/products-overview-screen';
+
   @override
   State<ProductOverViewScreen> createState() => _ProductOverViewScreenState();
 }
@@ -76,7 +79,7 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
 
         /// to be filled
       ),
-      drawer: const Drawer(),
+      drawer: const AppDrawer(),
       body: ProductGrid(showFavs),
     );
   }
